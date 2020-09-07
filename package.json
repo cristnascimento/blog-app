@@ -21,7 +21,7 @@
   },
   "license": "MIT",
   "engines": {
-    "node": "12.8.3"
+    "node": "12.x"
   },
   "author": "Start Bootstrap",
   "contributors": [
