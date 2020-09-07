@@ -6,6 +6,7 @@ const mongoose = require('mongoose');
 const fileUpload = require('express-fileupload');
 const expressSession = require('express-session');
 const flash = require('connect-flash');
+const dotenv = require('dotenv');
 
 const newPostController = require('./controllers/newPost');
 const homeController = require('./controllers/home');
@@ -19,7 +20,12 @@ const authMiddleware = require('./middleware/authMiddleware');
 const redirectIfAuthenticatedMiddleware = require('./middleware/redirectIfAuthenticatedMiddleware');
 const logoutController = require('./controllers/logout');
 
-mongoose.connect('mongodb://localhost/my_database', {useNewUrlParser: true, useUnifiedTopology: true});
+dotenv.config();
+
+let mongodb_uri = process.env.MONGODB_URI || 'mongodb://localhost/my_database';
+
+console.log(mongodb_uri);
+mongoose.connect(mongodb_uri, {useNewUrlParser: true, useUnifiedTopology: true});
 
 const app = express()
 
